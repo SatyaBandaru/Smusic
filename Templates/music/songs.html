@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<!--since some of the CSS is not working for some elements, added stying here -->
+{% include "music/navbar.html" %}
+{% load static %}
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href={% static "/css/bootstrap.css" %}>
+    <link rel="stylesheet" href={% static "/css/style-man.css" %}>
+    <link href="https://fonts.googleapis.com/css?family=ZCOOL+XiaoWei&display=swap" rel="stylesheet">
+    <title></title>
+  </head>
+  <body>
+    <div class="container">
+        <img src="{{ Album_pic.Album_pic.url }}" alt="no image found" width=200px height=225px>
+        <div class="table-responsive">
+        <table style="width:45%; margin-top:45px;" class="table table-hover table-condensed">
+          <tr style="color:#E74C3C;font-family: 'ZCOOL XiaoWei', serif;font-size: 125%;">
+            <th>Serial No</th>
+            <th>Song Name</th>
+            <th>Singer</th>
+          </tr>
+          {% for songs in Album_details %}
+          <tr>
+            <td><a style="color:#34495E" href="/albums/{{songs.Album_name}}/{{songs.Song_id}}/">
+                <img id="playpause" class="img-rounded" src={% static "/images/play.png" %} alt="no image found" href="{{songs.id}}/" width=20px value="play">
+                <strong id = 'max-song-id'>{{ songs.Song_id }}</strong></a></td>
+            <td style="color:#34495E"><strong>{{ songs.Song_name }}</strong></td>
+            <td style="color:#34495E"><strong>{{ songs.Singer }}</strong></td>
+          </tr>
+          {% endfor %}
+        </table>
+      </div>
+      </div>
+      <div>
+        <div class="container-fluid">
+          <div class="row column">
+            <img class="img-rounded" src={% static "/images/bkw.png" %} alt="no image found" id='fw'>
+            <audio autoplay controls id='audio1'>
+              {% if songs_id != 0 %}
+                <source id="source1" src="{{songs_id.Song_file.url}}" type="audio/mp3" value="{{data.Song_file.url}}">
+              {% else %}
+                <source id="source1" src="" type="audio/mp3" value="emplty">
+              {% endif %}
+            </audio>
+            <img class="img-rounded" src={% static "/images/fwd.png" %} id='fw1' style="margin-bottom:35px;" alt="no image found">
+          </div>
+       </div>
+    </div>
+    <script src={% static "js_scripts/jscript.js" %}>
+    </script>
+  </body>
+</html>

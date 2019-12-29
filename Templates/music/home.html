@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+{% include "music/navbar.html" %}
+{% load static %}
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href={% static "/css/bootstrap.css" %}>
+    <title></title>
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div class="row column">
+      {% for details in album_data %}
+        <a href="{{details.Album_name}}/0/">
+        <img class="col-sm-2" src="{{details.Album_pic.url}}" alt="no image found" height=250>
+        </a>
+      {% endfor %}
+    </div>
+  </div>
+  </body>
+</html>
