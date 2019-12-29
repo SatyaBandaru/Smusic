@@ -4,7 +4,7 @@ Music Player web application using Django and Python.
 pull the complete repository to local.
 
 Step 1: 
-copy Smusic folder path.
+copy Smusic-master folder path.
 
 Step 2:
 run cmd : py manage.py runserver
